@@ -1,0 +1,13 @@
+@function calcWidthBasedOnCount(
+  $maxWidth,
+  $columnsCount,
+  $columnsGap,
+  $sideSpace: 0px,
+  $addToWidth: 0px
+) {
+  $maxWidthGap: ($columnsGap * floor($columnsCount - 1));
+  @return calc(
+    ((#{$maxWidth} - #{$maxWidthGap} - (2 * #{$sideSpace})) / #{$columnsCount}) +
+      #{$addToWidth}
+  );
+}
