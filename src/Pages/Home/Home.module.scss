@@ -2,5 +2,9 @@
   background-color: yellow;
   .container {
     background-color: yellowgreen;
+    .itemsContainer {
+      display: flex;
+      flex-wrap: wrap;
+    }
   }
 }
