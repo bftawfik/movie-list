@@ -1,0 +1,39 @@
+@import "../../SharedScss/functions";
+@import "../../SharedScss/variables";
+
+$columnsCount: 6;
+$columnsGap: 16px;
+$sideSpace: 0px;
+
+.ItemBox {
+  display: flex;
+  flex-direction: column;
+  width: calcWidthBasedOnCount(100%, $columnsCount, $columnsGap);
+  margin-right: $columnsGap;
+  margin-bottom: $columnsGap;
+  padding: 1%;
+  border: 1px solid $clr-gray-66;
+  border-radius: 10px;
+  background-color: $clr-white;
+  box-sizing: border-box;
+  .imageContainer {
+    width: 100%;
+    height: 0;
+    padding-top: 150%;
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: bottom;
+    }
+  }
+  &:nth-child(6n) {
+    margin-right: 0;
+  }
+}
