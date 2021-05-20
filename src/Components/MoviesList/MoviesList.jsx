@@ -5,13 +5,15 @@ import ItemBox from "../ItemBox/ItemBox";
 
 import * as styles from "./MoviesList.module.scss";
 
-const MoviesList = ({ pageNo, totalPages, totalMovies, loadedMovies }) => {
+const MoviesList = ({ title, pageNo, totalPages, totalMovies, loadedMovies }) => {
   return (
     <div className={styles.MoviesList}>
-      <SectionHeader title="title" />
-      {loadedMovies.map((item) => (
-        <ItemBox key={item.id} item={item} />
-      ))}
+      <SectionHeader title={title} />
+      <div className={styles.moviesContainer}>
+        {loadedMovies.map((item) => (
+          <ItemBox key={item.id} item={item} />
+        ))}
+      </div>
     </div>
   );
 };
