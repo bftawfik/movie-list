@@ -28,7 +28,6 @@ const MoviesList = ({
           onChange={(inView, entry) => {
             if (inView && !loadingMore) {
               askForMore();
-              console.log("inView = ", inView);
             }
           }}
         >
@@ -40,9 +39,17 @@ const MoviesList = ({
                 ref={ref}
               />
             ) : rechedEnd ? (
-              <p ref={ref}>The End</p>
+              <p className={styles.theEnd} ref={ref}>
+                The End
+              </p>
             ) : (
-              <button ref={ref}>Show more</button>
+              <button
+                ref={ref}
+                className={styles.askForMore}
+                onClick={askForMore}
+              >
+                Show more
+              </button>
             );
           }}
         </InView>

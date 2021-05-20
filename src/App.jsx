@@ -40,7 +40,7 @@ class App extends React.Component {
     const { page, total_pages, total_results, results } = moviesData;
     this.setState({
       pageNo: page,
-      totalPages: 3,//total_pages,
+      totalPages: total_pages,
       totalMovies: total_results,
       loadedMovies: loadedMovies.concat(results),
       loadingMore: false,
