@@ -1,6 +1,17 @@
 .Header {
-  background-color: yellow;
+  background-color: #000033;
+  box-shadow: 0 0 10px -6px white;
+  position: relative;
+  z-index: 3;
   .container {
-    background-color: yellowgreen;
+    .headerRow {
+      display: flex;
+      justify-content: flex-start;
+      height: 70px;
+      .logo{
+        width: 140px;
+        margin-right: 16px;
+      }
+    }
   }
 }

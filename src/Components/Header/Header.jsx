@@ -11,10 +11,8 @@ const Header = () => {
       className={styles.Header}
       containerClassName={styles.container}
     >
-      <div>
-        <div style={{ width: "300px", height: "300px", backgroundColor: "blue" }}>
-          <Logo />
-        </div>
+      <div className={styles.headerRow}>
+        <Logo className={styles.logo} />
       </div>
     </FulscrnWrpr>
   );
