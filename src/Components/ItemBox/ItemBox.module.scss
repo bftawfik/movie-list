@@ -1,7 +1,7 @@
 @import "../../SharedScss/functions";
 @import "../../SharedScss/variables";
 
-$columnsCount: 6;
+$columnsCount: 5;
 $columnsGap: 16px;
 $sideSpace: 0px;
 
@@ -55,7 +55,7 @@ $sideSpace: 0px;
     margin: 0;
     color: #cccccc;;
   }
-  &:nth-child(6n) {
+  &:nth-child(#{$columnsCount}n) {
     margin-right: 0;
   }
 }
