@@ -1,0 +1,18 @@
+@import "../../SharedScss/variables";
+@import "../../SharedScss/functions";
+.SectionHeader {
+  display: flex;
+  flex-direction: column;
+  color: $clr-primary;
+  .title {
+    font-size: 28px;
+    font-weight: calcFontWeight($fontWeightSemiBold);
+    margin-bottom: 2px;
+  }
+  @media screen and(max-width: 640px) {
+    .title {
+      font-size: 16px;
+      margin-bottom: 2px;
+    }
+  }
+}
