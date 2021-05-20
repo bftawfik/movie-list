@@ -5,14 +5,11 @@ import ItemBox from "../../Components/ItemBox/ItemBox";
 
 import * as styles from "./Home.module.scss";
 
-import data from "../../Mock/movie";
-
-const Home = () => {
-  const { results } = data;
+const Home = ({ loadedMovies }) => {
   return (
     <FulscrnWrpr className={styles.Home} containerClassName={styles.container}>
       <div className={styles.itemsContainer}>
-        {results.map((item) => (
+        {loadedMovies.map((item) => (
           <ItemBox key={item.id} item={item} />
         ))}
       </div>
