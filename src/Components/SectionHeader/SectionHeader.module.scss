@@ -2,11 +2,11 @@
 @import "../../SharedScss/functions";
 .SectionHeader {
   display: flex;
-  flex-direction: column;
   .title {
     font-size: 38px;
     font-weight: calcFontWeight($fontWeightSemiBold);
     margin: 0 0 30px;
+    flex-grow: 1;
   }
   @media screen and(max-width: 640px) {
     .title {
