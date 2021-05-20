@@ -13,9 +13,10 @@ $sideSpace: 0px;
   margin-bottom: $columnsGap;
   padding: 1%;
   border-radius: 10px;
-  background-color: $clr-white;
+  // background-color: $clr-white;
+  color: $clr-white;
   box-sizing: border-box;
-  box-shadow: 0 0 10px -8px black;
+  box-shadow: 0 0 10px -6px white;
   .imageContainer {
     width: 100%;
     height: 0;
@@ -52,6 +53,7 @@ $sideSpace: 0px;
     line-height: 1.2;
     height: 44px;
     margin: 0;
+    color: #cccccc;;
   }
   &:nth-child(6n) {
     margin-right: 0;
