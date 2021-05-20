@@ -8,22 +8,20 @@ import { home as missingData } from "../../Mock";
 import * as styles from "./Home.module.scss";
 
 const Home = ({
-  pageNo,
-  totalPages,
   totalMovies,
   loadedMovies,
   loadingMore,
   askForMore,
+  rechedEnd,
 }) => {
   return (
     <FulscrnWrpr className={styles.Home} containerClassName={styles.container}>
       <MoviesList
         {...missingData.allMovies}
-        pageNo={pageNo}
-        totalPages={totalPages}
         totalMovies={totalMovies}
         loadedMovies={loadedMovies}
         loadingMore={loadingMore}
+        rechedEnd={rechedEnd}
         askForMore={askForMore}
       />
     </FulscrnWrpr>

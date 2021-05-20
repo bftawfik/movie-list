@@ -3,16 +3,15 @@ import { InView } from "react-intersection-observer";
 
 import SectionHeader from "../SectionHeader/SectionHeader";
 import ItemBox from "../ItemBox/ItemBox";
+import BounceLoader from "../Spinners/BounceLoader/BounceLoader";
 
 import * as styles from "./MoviesList.module.scss";
 
 const MoviesList = ({
   title,
-  pageNo,
-  totalPages,
-  totalMovies,
   loadedMovies,
   loadingMore,
+  rechedEnd,
   askForMore,
 }) => {
   return (
@@ -34,7 +33,17 @@ const MoviesList = ({
           }}
         >
           {({ inView, ref }) => {
-            return <button ref={ref}>Show more</button>;
+            return loadingMore ? (
+              <BounceLoader
+                topMsg="Loading..."
+                bottomMsg="Please Waiat."
+                ref={ref}
+              />
+            ) : rechedEnd ? (
+              <p ref={ref}>The End</p>
+            ) : (
+              <button ref={ref}>Show more</button>
+            );
           }}
         </InView>
       </div>

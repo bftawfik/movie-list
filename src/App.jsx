@@ -40,7 +40,7 @@ class App extends React.Component {
     const { page, total_pages, total_results, results } = moviesData;
     this.setState({
       pageNo: page,
-      totalPages: total_pages,
+      totalPages: 3,//total_pages,
       totalMovies: total_results,
       loadedMovies: loadedMovies.concat(results),
       loadingMore: false,
@@ -59,11 +59,10 @@ class App extends React.Component {
       <React.Fragment>
         <Header />
         <Home
-          pageNo={pageNo}
-          totalPages={totalPages}
           totalMovies={totalMovies}
           loadedMovies={loadedMovies}
           loadingMore={loadingMore}
+          rechedEnd={pageNo === totalPages}
           askForMore={this.askForMore}
         />
         <Footer />
