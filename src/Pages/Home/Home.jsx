@@ -1,18 +1,19 @@
 import React from "react";
 
 import FulscrnWrpr from "../../Components/FulscrnWrpr/FulscrnWrpr";
-import ItemBox from "../../Components/ItemBox/ItemBox";
+import MoviesList from "../../Components/MoviesList/MoviesList";
 
 import * as styles from "./Home.module.scss";
 
-const Home = ({ loadedMovies }) => {
+const Home = ({ pageNo, totalPages, totalMovies, loadedMovies }) => {
   return (
     <FulscrnWrpr className={styles.Home} containerClassName={styles.container}>
-      <div className={styles.itemsContainer}>
-        {loadedMovies.map((item) => (
-          <ItemBox key={item.id} item={item} />
-        ))}
-      </div>
+      <MoviesList
+        pageNo={pageNo}
+        totalPages={totalPages}
+        totalMovies={totalMovies}
+        loadedMovies={loadedMovies}
+      />
     </FulscrnWrpr>
   );
 };
