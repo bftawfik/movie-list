@@ -1,7 +1,9 @@
+@import "../../SharedScss/variables";
+
 .Home {
-  background-color: yellow;
+  background-color: #000033;
   .container {
-    background-color: yellowgreen;
+    margin: $web-section-padding-top 0 $web-section-padding-bottom;
     .itemsContainer {
       display: flex;
       flex-wrap: wrap;
