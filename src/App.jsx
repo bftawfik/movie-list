@@ -26,7 +26,7 @@ class App extends React.Component {
   }
 
   askForMore = () => {
-    console.log("askForMore");
+    // console.log("askForMore");
     const { pageNo, loadingMore, totalPages, loadedMovies } = this.state;
     if (!loadingMore && pageNo !== totalPages) {
       console.log(loadingMore);
@@ -35,17 +35,30 @@ class App extends React.Component {
   };
 
   loadMore = async () => {
-    console.log("loadMore");
+    // console.log("loadMore");
     const { pageNo, loadedMovies } = this.state;
     const moviesData = await Data.loadMovies(pageNo + 1);
     const { page, total_pages, total_results, results } = moviesData;
     this.setState({
       pageNo: page,
-      totalPages: 2,//total_pages,
+      totalPages: total_pages,
       totalMovies: total_results,
       loadedMovies: loadedMovies.concat(results),
       loadingMore: false,
     });
+  };
+
+  likeNewMovie = (newMovie) => {
+    // console.log("likeNewMovie");
+    const { myMovies } = this.state;
+    const found = myMovies.find((movie) => movie?.id === newMovie?.id) != null;
+    if (!found) {
+      this.setState({ myMovies: [...myMovies, newMovie] });
+    } else {
+      this.setState({
+        myMovies: myMovies.filter((movie) => movie?.id !== newMovie?.id),
+      });
+    }
   };
 
   render() {
@@ -67,6 +80,7 @@ class App extends React.Component {
           rechedEnd={pageNo === totalPages}
           askForMore={this.askForMore}
           myMovies={myMovies}
+          likeNewMovie={this.likeNewMovie}
         />
         <Footer />
       </React.Fragment>
