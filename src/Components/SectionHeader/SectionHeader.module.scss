@@ -3,16 +3,14 @@
 .SectionHeader {
   display: flex;
   flex-direction: column;
-  color: $clr-primary;
   .title {
-    font-size: 28px;
+    font-size: 38px;
     font-weight: calcFontWeight($fontWeightSemiBold);
-    margin-bottom: 2px;
+    margin: 0 0 30px;
   }
   @media screen and(max-width: 640px) {
     .title {
       font-size: 16px;
-      margin-bottom: 2px;
     }
   }
 }

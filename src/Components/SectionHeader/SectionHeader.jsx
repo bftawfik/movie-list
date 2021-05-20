@@ -6,7 +6,7 @@ import * as styles from "./SectionHeader.module.scss";
 
 const SectionHeader = ({ title, className }) => {
   return (
-    <div className={joinClassesWithSpace(styles.SectionTitles, className)}>
+    <div className={joinClassesWithSpace(styles.SectionHeader, className)}>
       <h2 className={styles.title}>{title}</h2>
     </div>
   );
