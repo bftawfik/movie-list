@@ -17,6 +17,7 @@ class App extends React.Component {
       totalMovies: 0,
       loadedMovies: [],
       loadingMore: false,
+      myMovies: [],
     };
   }
 
@@ -40,7 +41,7 @@ class App extends React.Component {
     const { page, total_pages, total_results, results } = moviesData;
     this.setState({
       pageNo: page,
-      totalPages: total_pages,
+      totalPages: 2,//total_pages,
       totalMovies: total_results,
       loadedMovies: loadedMovies.concat(results),
       loadingMore: false,
@@ -54,6 +55,7 @@ class App extends React.Component {
       totalMovies,
       loadedMovies,
       loadingMore,
+      myMovies,
     } = this.state;
     return (
       <React.Fragment>
@@ -64,6 +66,7 @@ class App extends React.Component {
           loadingMore={loadingMore}
           rechedEnd={pageNo === totalPages}
           askForMore={this.askForMore}
+          myMovies={myMovies}
         />
         <Footer />
       </React.Fragment>

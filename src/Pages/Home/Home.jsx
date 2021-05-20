@@ -13,9 +13,20 @@ const Home = ({
   loadingMore,
   askForMore,
   rechedEnd,
+  myMovies,
 }) => {
   return (
     <FulscrnWrpr className={styles.Home} containerClassName={styles.container}>
+      <MoviesList
+        {...missingData.myMovies}
+        totalMovies={myMovies.length}
+        loadedMovies={myMovies}
+        loadingMore={false}
+        rechedEnd={rechedEnd}
+        // askForMore={askForMore}
+      >
+        {myMovies.length === 0 && <div>joho</div>}
+      </MoviesList>
       <MoviesList
         {...missingData.allMovies}
         totalMovies={totalMovies}
