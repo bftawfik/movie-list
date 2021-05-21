@@ -17,8 +17,14 @@ const MoviesList = ({
   loadingMore,
   rechedEnd,
   askForMore,
-  children,
+  likeNewMovie,
+  matchList = [],
 }) => {
+  const matchedLoadedMovies = loadedMovies.map((movie) =>
+    matchList.find((matchMovie) => matchMovie?.id === movie?.id) != null
+      ? { ...movie, seleceted: true }
+      : movie
+  );
   return (
     <div
       className={joinClassesWithSpace(
@@ -33,8 +39,8 @@ const MoviesList = ({
         <div className={styles.emptyListMsg}>{emptyListMsg}</div>
       )}
       <div className={styles.moviesContainer}>
-        {loadedMovies.map((item) => (
-          <ItemBox key={item.id} item={item} />
+        {matchedLoadedMovies.map((item) => (
+          <ItemBox key={item.id} item={item} likeNewMovie={likeNewMovie} />
         ))}
       </div>
       {askForMore && (
