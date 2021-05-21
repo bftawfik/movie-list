@@ -14,6 +14,7 @@ const Home = ({
   askForMore,
   rechedEnd,
   myMovies,
+  likeNewMovie,
 }) => {
   return (
     <FulscrnWrpr className={styles.Home} containerClassName={styles.container}>
@@ -23,10 +24,9 @@ const Home = ({
         loadedMovies={myMovies}
         loadingMore={false}
         rechedEnd={rechedEnd}
-        // askForMore={askForMore}
-      >
-        {myMovies.length === 0 && <div>joho</div>}
-      </MoviesList>
+        likeNewMovie={likeNewMovie}
+        matchList={myMovies}
+      />
       <MoviesList
         {...missingData.allMovies}
         totalMovies={totalMovies}
@@ -34,6 +34,8 @@ const Home = ({
         loadingMore={loadingMore}
         rechedEnd={rechedEnd}
         askForMore={askForMore}
+        likeNewMovie={likeNewMovie}
+        matchList={myMovies}
       />
     </FulscrnWrpr>
   );
