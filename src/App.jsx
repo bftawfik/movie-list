@@ -3,7 +3,6 @@ import React from "react";
 import Home from "./Pages/Home/Home";
 
 import Header from "./Components/Header/Header";
-import Footer from "./Components/Footer/Footer";
 
 import Data from "./Services/Data";
 
@@ -82,7 +81,6 @@ class App extends React.Component {
           myMovies={myMovies}
           likeNewMovie={this.likeNewMovie}
         />
-        <Footer />
       </React.Fragment>
     );
   }
