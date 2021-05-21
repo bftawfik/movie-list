@@ -40,22 +40,61 @@ $sideSpace: 0px;
     height: 48px;
     margin-top: 0;
   }
-  .date {
-    font-size: 12px;
-    font-weight: bold;
+  .dateContainer {
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
     align-items: flex-end;
-    margin: 0 0 5px;
+    margin-bottom: 5px;
+    button {
+      width: 35px;
+      background-color: transparent;
+      border: 0;
+      cursor: pointer;
+      svg {
+        path {
+          fill: #aaaa00;
+          &:first-child {
+            fill: transparent;
+          }
+        }
+      }
+      &:hover {
+        svg {
+          path {
+            &:first-child {
+              fill: yellow;
+            }
+          }
+        }
+      }
+    }
+    p {
+      font-size: 12px;
+      font-weight: bold;
+      margin: 0 0 5px;
+    }
   }
   .overview {
     font-size: 12px;
     line-height: 1.2;
     height: 44px;
     margin: 0;
-    color: #cccccc;;
+    color: #cccccc;
   }
   &:nth-child(#{$columnsCount}n) {
     margin-right: 0;
+  }
+  &.seleceted {
+    .dateContainer {
+      button {
+        svg {
+          path {
+            &:first-child {
+              fill: yellow;
+            }
+          }
+        }
+      }
+    }
   }
 }

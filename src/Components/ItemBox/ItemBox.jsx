@@ -1,17 +1,28 @@
 import React from "react";
 import LinesEllipsis from "react-lines-ellipsis";
 
+import { Heart } from "../AllSvgs";
+import { joinClassesWithSpace } from "../../Helpers/helperFunctions";
+
 import Data from "../../Services/Data";
 
 import * as styles from "./ItemBox.module.scss";
 
-const ItemBox = ({ item: { title, poster_path, release_date, overview } }) => {
+const ItemBox = ({ item, likeNewMovie }) => {
+  const { title, poster_path, release_date, overview, seleceted } = item;
   return (
-    <div className={styles.ItemBox}>
-      <p className={styles.date}>
-        {/* <span>Realease Date:</span> */}
-        <span>{Data.getProperDate(release_date)}</span>
-      </p>
+    <div
+      className={joinClassesWithSpace(
+        styles.ItemBox,
+        seleceted && styles.seleceted
+      )}
+    >
+      <div className={styles.dateContainer}>
+        <button onClick={() => likeNewMovie(item)}>
+          <Heart />
+        </button>
+        <p>{Data.getProperDate(release_date)}</p>
+      </div>
       <div className={styles.imageContainer}>
         <img src={Data.getProperImageUrl(poster_path)} />
       </div>
