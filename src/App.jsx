@@ -16,7 +16,15 @@ class App extends React.Component {
       totalMovies: 0,
       loadedMovies: [],
       loadingMore: false,
-      myMovies: [],
+      userMovies: [],
+      likedMovies: [],
+      tempNewMovie: {
+        type: "userMovie",
+        movieName: "",
+        movieDate: null,
+        movieOverview: "",
+        moviePoster: null,
+      },
     };
   }
 
@@ -26,9 +34,9 @@ class App extends React.Component {
 
   askForMore = () => {
     // console.log("askForMore");
-    const { pageNo, loadingMore, totalPages, loadedMovies } = this.state;
+    const { pageNo, loadingMore, totalPages } = this.state;
     if (!loadingMore && pageNo !== totalPages) {
-      console.log(loadingMore);
+      // console.log(loadingMore);
       this.setState({ loadingMore: true }, this.loadMore);
     }
   };
@@ -49,15 +57,64 @@ class App extends React.Component {
 
   likeNewMovie = (newMovie) => {
     // console.log("likeNewMovie");
-    const { myMovies } = this.state;
-    const found = myMovies.find((movie) => movie?.id === newMovie?.id) != null;
+    const { likedMovies } = this.state;
+    const found =
+      likedMovies.find((movie) => movie?.id === newMovie?.id) != null;
     if (!found) {
-      this.setState({ myMovies: [...myMovies, newMovie] });
+      this.setState({ likedMovies: [...likedMovies, newMovie] });
     } else {
       this.setState({
-        myMovies: myMovies.filter((movie) => movie?.id !== newMovie?.id),
+        likedMovies: likedMovies.filter((movie) => movie?.id !== newMovie?.id),
       });
     }
+  };
+
+  onInput = (type, e) => {
+    const { tempNewMovie } = this.state;
+    console.log(type);
+    if (type === "moviePoster") {
+      var selectedFile = e.target.files[0];
+      var reader = new FileReader();
+
+      reader.onload = (event) => {
+        console.log(event.target.result);
+        this.setState({
+          tempNewMovie: { ...tempNewMovie, [type]: event.target.result },
+        });
+      };
+
+      reader.readAsDataURL(selectedFile);
+    } else {
+      if (tempNewMovie[type] !== e.target.value) {
+        this.setState({
+          tempNewMovie: {
+            ...tempNewMovie,
+            [type]: e.target.value,
+          },
+        });
+      }
+    }
+  };
+
+  onSubmit = (e) => {
+    e.preventDefault();
+    const {
+      userMovies,
+      tempNewMovie: { type, movieName, movieDate, movieOverview, moviePoster },
+    } = this.state;
+    console.log(moviePoster || null);
+    this.setState({
+      userMovies: [
+        ...userMovies,
+        {
+          type: type,
+          title: movieName,
+          release_date: movieDate,
+          overview: movieOverview,
+          poster_path: moviePoster,
+        },
+      ],
+    });
   };
 
   render() {
@@ -67,7 +124,9 @@ class App extends React.Component {
       totalMovies,
       loadedMovies,
       loadingMore,
-      myMovies,
+      userMovies,
+      likedMovies,
+      tempNewMovie,
     } = this.state;
     return (
       <React.Fragment>
@@ -78,8 +137,11 @@ class App extends React.Component {
           loadingMore={loadingMore}
           rechedEnd={pageNo === totalPages}
           askForMore={this.askForMore}
-          myMovies={myMovies}
+          allLikedMovies={userMovies.concat(likedMovies)}
           likeNewMovie={this.likeNewMovie}
+          tempNewMovie={tempNewMovie}
+          onInputHandler={this.onInput}
+          onSubmitHandler={this.onSubmit}
         />
       </React.Fragment>
     );
