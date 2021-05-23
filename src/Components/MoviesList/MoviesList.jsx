@@ -60,7 +60,6 @@ const MoviesList = ({
                 <BounceLoader
                   topMsg="Loading..."
                   bottomMsg="Please Waiat."
-                  ref={ref}
                 />
               ) : rechedEnd ? (
                 <p className={styles.theEnd} ref={ref}>
@@ -68,7 +67,6 @@ const MoviesList = ({
                 </p>
               ) : (
                 <button
-                  ref={ref}
                   className={styles.askForMore}
                   onClick={askForMore && askForMore}
                 >
