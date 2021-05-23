@@ -18,7 +18,11 @@ const AddItemData = ({
   return (
     <div className={styles.AddItemData}>
       <SectionHeader title={title} />
-      <form className={styles.addItemForm} onSubmit={onSubmitHandler}>
+      <form
+        className={styles.addItemForm}
+        onSubmit={onSubmitHandler}
+        onReset={resetTempNewMovie}
+      >
         {rows.map((row, ndx) => {
           const { type } = row;
           return (
@@ -33,9 +37,7 @@ const AddItemData = ({
         })}
         <div className={joinClassesWithSpace(styles.formRow, styles.fullWidth)}>
           <button type="submit">Add Movie</button>
-          <button type="reset" onClick={resetTempNewMovie}>
-            Cencel
-          </button>
+          <button type="reset">Cencel</button>
         </div>
       </form>
     </div>

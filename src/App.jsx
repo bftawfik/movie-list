@@ -31,7 +31,7 @@ class App extends React.Component {
     id: uuid(),
     type: "userMovie",
     movieName: "",
-    movieDate: null,
+    movieDate: "",
     movieOverview: "",
     moviePoster: null,
   });
@@ -129,6 +129,13 @@ class App extends React.Component {
     this.resetTempNewMovie();
   };
 
+  removeUserMovie = (newMovie) => {
+    const { userMovies } = this.state;
+    this.setState({
+      userMovies: userMovies.filter((movie) => movie?.id !== newMovie?.id),
+    });
+  };
+
   render() {
     const {
       pageNo,
@@ -155,6 +162,7 @@ class App extends React.Component {
           onInputHandler={this.onInput}
           onSubmitHandler={this.onSubmit}
           resetTempNewMovie={this.resetTempNewMovie}
+          removeUserMovie={this.removeUserMovie}
         />
       </React.Fragment>
     );

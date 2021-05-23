@@ -1,7 +1,7 @@
 import React from "react";
 import LinesEllipsis from "react-lines-ellipsis";
 
-import { Heart } from "../AllSvgs";
+import { Delete, Heart } from "../AllSvgs";
 import { joinClassesWithSpace } from "../../Helpers/helperFunctions";
 
 import Data from "../../Services/Data";
@@ -15,7 +15,13 @@ class ItemBox extends React.Component {
 
   render() {
     const { error } = this.state;
-    const { item, likeNewMovie, addTitle, removeTitle } = this.props;
+    const {
+      item,
+      likeNewMovie,
+      removeUserMovie,
+      addTitle,
+      removeTitle,
+    } = this.props;
     const {
       title,
       poster_path,
@@ -33,10 +39,12 @@ class ItemBox extends React.Component {
       >
         <div className={styles.dateContainer}>
           <button
-            onClick={() => likeNewMovie(item)}
+            onClick={() =>
+              type === "userMovie" ? removeUserMovie(item) : likeNewMovie(item)
+            }
             title={seleceted ? removeTitle : addTitle}
           >
-            <Heart />
+            {type === "userMovie" ? <Delete /> : <Heart />}
           </button>
           <p>{Data.getProperDate(release_date)}</p>
         </div>

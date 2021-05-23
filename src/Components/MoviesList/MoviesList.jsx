@@ -21,6 +21,7 @@ const MoviesList = ({
   askForMore,
   likeNewMovie,
   matchList = [],
+  removeUserMovie,
   children,
 }) => {
   const matchedLoadedMovies = loadedMovies.map((movie) =>
@@ -50,6 +51,7 @@ const MoviesList = ({
             likeNewMovie={likeNewMovie}
             addTitle={addTitle}
             removeTitle={removeTitle}
+            removeUserMovie={removeUserMovie}
           />
         ))}
       </div>

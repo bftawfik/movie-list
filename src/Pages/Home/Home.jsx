@@ -39,6 +39,7 @@ class Home extends React.Component {
       onInputHandler,
       onSubmitHandler,
       resetTempNewMovie,
+      removeUserMovie,
     } = this.props;
     return (
       <React.Fragment>
@@ -54,6 +55,7 @@ class Home extends React.Component {
             rechedEnd={rechedEnd}
             likeNewMovie={likeNewMovie}
             matchList={allLikedMovies}
+            removeUserMovie={removeUserMovie}
           >
             <AddItemBox onClickHandler={this.toggleModal} />
           </MoviesList>
