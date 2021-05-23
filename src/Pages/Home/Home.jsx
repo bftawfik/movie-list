@@ -19,6 +19,7 @@ const Home = ({
 }) => {
   return (
     <FulscrnWrpr className={styles.Home} containerClassName={styles.container}>
+
       <MoviesList
         {...missingData.myMovies}
         totalMovies={myMovies.length}
@@ -28,7 +29,11 @@ const Home = ({
         likeNewMovie={likeNewMovie}
         matchList={myMovies}
       >
-        <AddItemBox />
+        <AddItemBox
+          onClickHandler={() => {
+            console.log("hi");
+          }}
+        />
       </MoviesList>
       <MoviesList
         {...missingData.allMovies}

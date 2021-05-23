@@ -4,15 +4,18 @@ import { joinClassesWithSpace } from "../../Helpers/helperFunctions";
 
 import * as styles from "./AddItemBox.module.scss";
 
-const AddItemBox = (props) => {
+const AddItemBox = ({ onClickHandler }) => {
   return (
-    <button className={joinClassesWithSpace(styles.AddItemBox)}>
+    <button
+      className={joinClassesWithSpace(styles.AddItemBox)}
+      onClick={onClickHandler}
+    >
       <div className={styles.dateContainer}></div>
       <div className={styles.imageContainer}>
         <div className={styles.imagePlaceHolder} />
       </div>
       <h3 className={styles.title}>Add a new movie</h3>
-      <p className={styles.overview}/>
+      <p className={styles.overview} />
     </button>
   );
 };
