@@ -1,4 +1,5 @@
 import React from "react";
+import uuid from "react-uuid";
 
 import Home from "./Pages/Home/Home";
 
@@ -19,6 +20,7 @@ class App extends React.Component {
       userMovies: [],
       likedMovies: [],
       tempNewMovie: {
+        id: uuid(),
         type: "userMovie",
         movieName: "",
         movieDate: null,
@@ -71,13 +73,10 @@ class App extends React.Component {
 
   onInput = (type, e) => {
     const { tempNewMovie } = this.state;
-    console.log(type);
     if (type === "moviePoster") {
       var selectedFile = e.target.files[0];
       var reader = new FileReader();
-
       reader.onload = (event) => {
-        console.log(event.target.result);
         this.setState({
           tempNewMovie: { ...tempNewMovie, [type]: event.target.result },
         });
@@ -100,13 +99,20 @@ class App extends React.Component {
     e.preventDefault();
     const {
       userMovies,
-      tempNewMovie: { type, movieName, movieDate, movieOverview, moviePoster },
+      tempNewMovie: {
+        id,
+        type,
+        movieName,
+        movieDate,
+        movieOverview,
+        moviePoster,
+      },
     } = this.state;
-    console.log(moviePoster || null);
     this.setState({
       userMovies: [
         ...userMovies,
         {
+          id: id,
           type: type,
           title: movieName,
           release_date: movieDate,
