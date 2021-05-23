@@ -14,37 +14,7 @@
   }
 }
 
-.overlay {
-  padding: 4rem;
-}
 .modal {
-  // width: 100%;
-  // height: 100%;
-  max-width: 1200px;
-  max-height: 600px;
-  background-color: transparent;
-  box-shadow: none;
-  padding: 0;
   background-color: $clr-001 !important;
   color: $clr-002;
-  > div {
-    width: 100%;
-    height: 100%;
-    > button {
-      top: -2rem;
-      right: 0;
-      svg {
-        fill: white;
-      }
-      &:before {
-        content: "Close";
-        font-size: 0.8rem;
-        position: absolute;
-        top: 50%;
-        right: 40px;
-        transform: translateY(-50%);
-        color: white;
-      }
-    }
-  }
 }
