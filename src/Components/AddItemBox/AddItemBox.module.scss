@@ -124,4 +124,44 @@ $sideSpace: 0px;
       }
     }
   }
+  @media screen and(max-width: 1024px) {
+    $columnsCount: 4;
+    width: calcWidthBasedOnCount(100%, $columnsCount, $columnsGap);
+    &:nth-child(#{$columnsCount + 1}n) {
+      margin-right: $columnsGap;
+    }
+    &:nth-child(#{$columnsCount}n) {
+      margin-right: 0;
+    }
+  }
+  @media screen and(max-width: 768px) {
+    $columnsCount: 3;
+    width: calcWidthBasedOnCount(100%, $columnsCount, $columnsGap);
+    &:nth-child(#{$columnsCount + 1}n) {
+      margin-right: $columnsGap;
+    }
+    &:nth-child(#{$columnsCount}n) {
+      margin-right: 0;
+    }
+  }
+  @media screen and(max-width: 540px) {
+    $columnsCount: 2;
+    width: calcWidthBasedOnCount(100%, $columnsCount, $columnsGap);
+    &:nth-child(#{$columnsCount + 1}n) {
+      margin-right: $columnsGap;
+    }
+    &:nth-child(#{$columnsCount}n) {
+      margin-right: 0;
+    }
+  }
+  @media screen and(max-width: 320px) {
+    $columnsCount: 1;
+    width: calcWidthBasedOnCount(100%, $columnsCount, $columnsGap);
+    &:nth-child(#{$columnsCount + 1}n) {
+      margin-right: $columnsGap;
+    }
+    &:nth-child(#{$columnsCount}n) {
+      margin-right: 0;
+    }
+  }
 }

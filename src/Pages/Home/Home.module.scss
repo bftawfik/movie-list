@@ -5,5 +5,11 @@
   color: $clr-white;
   .container {
     margin: $web-section-padding-top 0 $web-section-padding-bottom;
+    box-sizing: border-box;
+  }
+  @media screen and(max-width: 1232px) {
+    .container {
+      padding: 0 $web-side-space;
+    }
   }
 }
