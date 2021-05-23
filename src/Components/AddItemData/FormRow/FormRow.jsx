@@ -7,21 +7,40 @@ const FormRow = ({ styles, row: { type, label }, value, inputFunction }) => {
   const rowInputProps = {
     id: type,
     name: type,
-    className: styles.formInput,
     onInput: inputFunction,
     required: true,
   };
   switch (type) {
     case "movieName": {
-      rowInput = <input type="text" value={value} {...rowInputProps} />;
+      rowInput = (
+        <input
+          type="text"
+          value={value}
+          className={styles.formInput}
+          {...rowInputProps}
+        />
+      );
       break;
     }
     case "movieDate": {
-      rowInput = <input type="date" value={value} {...rowInputProps} />;
+      rowInput = (
+        <input
+          type="date"
+          value={value}
+          className={styles.formInput}
+          {...rowInputProps}
+        />
+      );
       break;
     }
     case "movieOverview": {
-      rowInput = <textarea value={value} {...rowInputProps} />;
+      rowInput = (
+        <textarea
+          value={value}
+          className={joinClassesWithSpace(styles.formInput, styles.formTextarea)}
+          {...rowInputProps}
+        />
+      );
       break;
     }
     case "moviePoster": {

@@ -1,3 +1,5 @@
+@import "../../SharedScss/variables";
+
 .AddItemData {
   display: flex;
   flex-direction: column;
@@ -10,7 +12,23 @@
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
-      &:nth-child(odd){
+      &.fullWidth {
+        width: 100%;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        margin-right: 0;
+        button {
+          background-color: $clr-002;
+          color: $clr-001 !important;
+          border: 0;
+          width: 150px;
+          height: 34px;
+          border-radius: 17px;
+          font-size: 16px;
+        }
+      }
+      &:nth-child(odd) {
         margin-right: 32px;
       }
       .formLabel {
@@ -21,8 +39,35 @@
           }
         }
       }
-      .formInput{
+      .formInput {
         height: 40px;
+        border-radius: 5px;
+        width: 100%;
+        &.formTextarea {
+          height: 100px;
+        }
+      }
+    }
+  }
+  @media screen and(max-width: 768px) {
+    .addItemForm {
+      flex-direction: column;
+      .formRow {
+        width: 100%;
+        &:nth-child(odd) {
+          margin-right: 0;
+        }
+        &.fullWidth {
+          button {
+            background-color: $clr-002;
+            color: $clr-001 !important;
+            border: 0;
+            width: 120px;
+            height: 34px;
+            border-radius: 17px;
+            font-size: 12px;
+          }
+        }
       }
     }
   }

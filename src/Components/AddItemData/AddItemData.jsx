@@ -37,7 +37,7 @@ const AddItemData = ({
         })}
         <div className={joinClassesWithSpace(styles.formRow, styles.fullWidth)}>
           <button type="submit">Add Movie</button>
-          <button type="reset">Cencel</button>
+          <button type="reset">Reset</button>
         </div>
       </form>
     </div>

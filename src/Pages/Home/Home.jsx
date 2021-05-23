@@ -60,7 +60,11 @@ const Home = ({
         open={modalOpen}
         onClose={() => setModalOpen(false)}
         center
-        classNames={{ overlay: styles.overlay, modal: styles.modal }}
+        classNames={{
+          overlay: styles.overlay,
+          modal: styles.modal,
+          closeButton: styles.closeButton,
+        }}
       >
         <AddItemData
           {...missingData.addItemData}
