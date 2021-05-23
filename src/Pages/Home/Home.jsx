@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import "react-responsive-modal/styles.css";
 import { Modal } from "react-responsive-modal";
@@ -12,79 +12,64 @@ import { home as missingData } from "../../Mock";
 
 import * as styles from "./Home.module.scss";
 
-class Home extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      modalOpen: false,
-    };
-  }
-
-  toggleModal = () => {
-    const { modalOpen } = this.state;
-    this.setState({ modalOpen: !modalOpen });
-  };
-
-  render() {
-    const { modalOpen } = this.state;
-    const {
-      totalMovies,
-      loadedMovies,
-      loadingMore,
-      askForMore,
-      rechedEnd,
-      allLikedMovies,
-      likeNewMovie,
-      tempNewMovie,
-      onInputHandler,
-      onSubmitHandler,
-      resetTempNewMovie,
-      removeUserMovie,
-    } = this.props;
-    return (
-      <React.Fragment>
-        <FulscrnWrpr
-          className={styles.Home}
-          containerClassName={styles.container}
+const Home = ({
+  totalMovies,
+  loadedMovies,
+  isLoading,
+  askForMore,
+  rechedEnd,
+  allLikedMovies,
+  likeNewMovie,
+  tempNewMovie,
+  onInputHandler,
+  onSubmitHandler,
+  resetTempNewMovie,
+  removeUserMovie,
+}) => {
+  const [modalOpen, setModalOpen] = useState(false);
+  return (
+    <React.Fragment>
+      <FulscrnWrpr
+        className={styles.Home}
+        containerClassName={styles.container}
+      >
+        <MoviesList
+          {...missingData.allLikedMovies}
+          totalMovies={allLikedMovies.length}
+          loadedMovies={allLikedMovies}
+          isLoading={false}
+          rechedEnd={rechedEnd}
+          likeNewMovie={likeNewMovie}
+          matchList={allLikedMovies}
+          removeUserMovie={removeUserMovie}
         >
-          <MoviesList
-            {...missingData.allLikedMovies}
-            totalMovies={allLikedMovies.length}
-            loadedMovies={allLikedMovies}
-            loadingMore={false}
-            rechedEnd={rechedEnd}
-            likeNewMovie={likeNewMovie}
-            matchList={allLikedMovies}
-            removeUserMovie={removeUserMovie}
-          >
-            <AddItemBox onClickHandler={this.toggleModal} />
-          </MoviesList>
-          <MoviesList
-            {...missingData.allMovies}
-            totalMovies={totalMovies}
-            loadedMovies={loadedMovies}
-            loadingMore={loadingMore}
-            rechedEnd={rechedEnd}
-            askForMore={askForMore}
-            likeNewMovie={likeNewMovie}
-            matchList={allLikedMovies}
-          />
-        </FulscrnWrpr>
-        <Modal open={modalOpen} onClose={this.toggleModal} center>
-          <AddItemData
-            {...missingData.addItemData}
-            tempNewMovie={tempNewMovie}
-            onInputHandler={onInputHandler}
-            onSubmitHandler={(e) => {
-              this.toggleModal();
-              onSubmitHandler(e);
-            }}
-            resetTempNewMovie={resetTempNewMovie}
-          />
-        </Modal>
-      </React.Fragment>
-    );
-  }
-}
+          <AddItemBox onClickHandler={() => setModalOpen(true)} />
+        </MoviesList>
+        <MoviesList
+          {...missingData.allMovies}
+          totalMovies={totalMovies}
+          loadedMovies={loadedMovies}
+          isLoading={isLoading}
+          rechedEnd={rechedEnd}
+          askForMore={askForMore}
+          likeNewMovie={likeNewMovie}
+          matchList={allLikedMovies}
+        />
+      </FulscrnWrpr>
+      <Modal open={modalOpen} onClose={() => setModalOpen(false)} center>
+        <AddItemData
+          {...missingData.addItemData}
+          tempNewMovie={tempNewMovie}
+          onInputHandler={onInputHandler}
+          onSubmitHandler={(e) => {
+            setModalOpen(false);
+            onSubmitHandler(e);
+          }}
+          resetTempNewMovie={resetTempNewMovie}
+        />
+      </Modal>
+    </React.Fragment>
+  );
+};
 
 export default Home;

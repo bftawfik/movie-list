@@ -16,7 +16,7 @@ const MoviesList = ({
   removeTitle,
   totalMovies,
   loadedMovies,
-  loadingMore,
+  isLoading,
   rechedEnd,
   askForMore,
   likeNewMovie,
@@ -60,13 +60,13 @@ const MoviesList = ({
           <InView
             threshold={1}
             onChange={(inView, entry) => {
-              if (inView && !loadingMore && askForMore) {
+              if (inView && !isLoading && askForMore) {
                 askForMore();
               }
             }}
           >
             {({ inView, ref }) => {
-              return loadingMore ? (
+              return isLoading ? (
                 <BounceLoader topMsg="Loading..." bottomMsg="Please Waiat." />
               ) : rechedEnd ? (
                 <p className={styles.theEnd} ref={ref}>
