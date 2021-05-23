@@ -3,7 +3,6 @@ import { InView } from "react-intersection-observer";
 
 import SectionHeader from "../SectionHeader/SectionHeader";
 import ItemBox from "../ItemBox/ItemBox";
-import AddItemBox from "../AddItemBox/AddItemBox";
 import BounceLoader from "../Spinners/BounceLoader/BounceLoader";
 
 import { joinClassesWithSpace } from "../../Helpers/helperFunctions";
