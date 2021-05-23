@@ -1,6 +1,8 @@
+@import "../../SharedScss/variables";
+
 .Header {
-  background-color: #000033;
-  box-shadow: 0 0 10px -6px white;
+  background-color: $clr-001;
+  box-shadow: 0 0 10px -6px $clr-002;
   position: relative;
   z-index: 3;
   .container {

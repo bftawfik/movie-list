@@ -13,10 +13,9 @@ $sideSpace: 0px;
   margin-bottom: $columnsGap;
   padding: 1%;
   border-radius: 10px;
-  // background-color: $clr-white;
-  color: $clr-white;
+  color: $clr-002;
   box-sizing: border-box;
-  box-shadow: 0 0 10px -6px $clr-white;
+  box-shadow: 0 0 10px -6px $clr-002;
   background-color: transparent;
   border: 0;
   cursor: pointer;
@@ -26,7 +25,7 @@ $sideSpace: 0px;
     padding-top: 150%;
     position: relative;
     border-radius: 10px;
-    border: 1px solid $clr-white;
+    border: 1px solid $clr-002;
     overflow: hidden;
     .imagePlaceHolder {
       position: absolute;
@@ -37,12 +36,12 @@ $sideSpace: 0px;
       padding-top: 50%;
       object-fit: cover;
       object-position: bottom;
-      border: 1px solid $clr-white;
+      border: 1px solid $clr-002;
       &::before {
         content: "";
         width: 50%;
         height: 3px;
-        background-color: $clr-white;
+        background-color: $clr-002;
         position: absolute;
         top: 50%;
         left: 50%;
@@ -52,7 +51,7 @@ $sideSpace: 0px;
         content: "";
         width: 3px;
         height: 50%;
-        background-color: $clr-white;
+        background-color: $clr-002;
         position: absolute;
         top: 50%;
         left: 50%;
@@ -79,7 +78,7 @@ $sideSpace: 0px;
       cursor: pointer;
       svg {
         path {
-          fill: #aaaa00;
+          fill: $clr-003;
           &:first-child {
             fill: transparent;
           }
@@ -89,7 +88,7 @@ $sideSpace: 0px;
         svg {
           path {
             &:first-child {
-              fill: yellow;
+              fill: $clr-004;
             }
           }
         }
@@ -101,13 +100,6 @@ $sideSpace: 0px;
       margin: 0 0 5px;
     }
   }
-  .overview {
-    font-size: 12px;
-    line-height: 1.2;
-    height: 44px;
-    margin: 0;
-    color: #cccccc;
-  }
   &:nth-child(#{$columnsCount}n) {
     margin-right: 0;
   }
@@ -117,7 +109,7 @@ $sideSpace: 0px;
         svg {
           path {
             &:first-child {
-              fill: yellow;
+              fill: $clr-004;
             }
           }
         }

@@ -56,7 +56,12 @@ const Home = ({
           matchList={allLikedMovies}
         />
       </FulscrnWrpr>
-      <Modal open={modalOpen} onClose={() => setModalOpen(false)} center>
+      <Modal
+        open={modalOpen}
+        onClose={() => setModalOpen(false)}
+        center
+        classNames={{ overlay: styles.overlay, modal: styles.modal }}
+      >
         <AddItemData
           {...missingData.addItemData}
           tempNewMovie={tempNewMovie}
