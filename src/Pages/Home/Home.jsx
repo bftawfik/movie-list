@@ -1,52 +1,83 @@
 import React from "react";
 
+import "react-responsive-modal/styles.css";
+import { Modal } from "react-responsive-modal";
+
 import FulscrnWrpr from "../../Components/FulscrnWrpr/FulscrnWrpr";
 import MoviesList from "../../Components/MoviesList/MoviesList";
 import AddItemBox from "../../Components/AddItemBox/AddItemBox";
+import AddItemData from "../../Components/AddItemData/AddItemData";
 
 import { home as missingData } from "../../Mock";
 
 import * as styles from "./Home.module.scss";
 
-const Home = ({
-  totalMovies,
-  loadedMovies,
-  loadingMore,
-  askForMore,
-  rechedEnd,
-  myMovies,
-  likeNewMovie,
-}) => {
-  return (
-    <FulscrnWrpr className={styles.Home} containerClassName={styles.container}>
+class Home extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      modalOpen: false,
+    };
+  }
 
-      <MoviesList
-        {...missingData.myMovies}
-        totalMovies={myMovies.length}
-        loadedMovies={myMovies}
-        loadingMore={false}
-        rechedEnd={rechedEnd}
-        likeNewMovie={likeNewMovie}
-        matchList={myMovies}
-      >
-        <AddItemBox
-          onClickHandler={() => {
-            console.log("hi");
-          }}
-        />
-      </MoviesList>
-      <MoviesList
-        {...missingData.allMovies}
-        totalMovies={totalMovies}
-        loadedMovies={loadedMovies}
-        loadingMore={loadingMore}
-        rechedEnd={rechedEnd}
-        askForMore={askForMore}
-        likeNewMovie={likeNewMovie}
-        matchList={myMovies}
-      />
-    </FulscrnWrpr>
-  );
-};
+  toggleModal = () => {
+    const { modalOpen } = this.state;
+    this.setState({ modalOpen: !modalOpen });
+  };
+
+  render() {
+    const { modalOpen } = this.state;
+    const {
+      totalMovies,
+      loadedMovies,
+      loadingMore,
+      askForMore,
+      rechedEnd,
+      allLikedMovies,
+      likeNewMovie,
+      tempNewMovie,
+      onInputHandler,
+      onSubmitHandler,
+    } = this.props;
+    return (
+      <React.Fragment>
+        <FulscrnWrpr
+          className={styles.Home}
+          containerClassName={styles.container}
+        >
+          <MoviesList
+            {...missingData.allLikedMovies}
+            totalMovies={allLikedMovies.length}
+            loadedMovies={allLikedMovies}
+            loadingMore={false}
+            rechedEnd={rechedEnd}
+            likeNewMovie={likeNewMovie}
+            matchList={allLikedMovies}
+          >
+            <AddItemBox onClickHandler={this.toggleModal} />
+          </MoviesList>
+          <MoviesList
+            {...missingData.allMovies}
+            totalMovies={totalMovies}
+            loadedMovies={loadedMovies}
+            loadingMore={loadingMore}
+            rechedEnd={rechedEnd}
+            askForMore={askForMore}
+            likeNewMovie={likeNewMovie}
+            matchList={allLikedMovies}
+          />
+        </FulscrnWrpr>
+        <Modal open={modalOpen} onClose={this.toggleModal} center>
+          <AddItemData
+            {...missingData.addItemData}
+            tempNewMovie={tempNewMovie}
+            onInputHandler={onInputHandler}
+            onSubmitHandler={onSubmitHandler}
+          />
+        </Modal>
+      </React.Fragment>
+    );
+  }
+}
 
 export default Home;
