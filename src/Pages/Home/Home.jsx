@@ -2,6 +2,7 @@ import React from "react";
 
 import FulscrnWrpr from "../../Components/FulscrnWrpr/FulscrnWrpr";
 import MoviesList from "../../Components/MoviesList/MoviesList";
+import AddItemBox from "../../Components/AddItemBox/AddItemBox";
 
 import { home as missingData } from "../../Mock";
 
@@ -26,7 +27,9 @@ const Home = ({
         rechedEnd={rechedEnd}
         likeNewMovie={likeNewMovie}
         matchList={myMovies}
-      />
+      >
+        <AddItemBox />
+      </MoviesList>
       <MoviesList
         {...missingData.allMovies}
         totalMovies={totalMovies}

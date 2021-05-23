@@ -3,6 +3,7 @@ import { InView } from "react-intersection-observer";
 
 import SectionHeader from "../SectionHeader/SectionHeader";
 import ItemBox from "../ItemBox/ItemBox";
+import AddItemBox from "../AddItemBox/AddItemBox";
 import BounceLoader from "../Spinners/BounceLoader/BounceLoader";
 
 import { joinClassesWithSpace } from "../../Helpers/helperFunctions";
@@ -19,6 +20,7 @@ const MoviesList = ({
   askForMore,
   likeNewMovie,
   matchList = [],
+  children,
 }) => {
   const matchedLoadedMovies = loadedMovies.map((movie) =>
     matchList.find((matchMovie) => matchMovie?.id === movie?.id) != null
@@ -39,6 +41,7 @@ const MoviesList = ({
         <div className={styles.emptyListMsg}>{emptyListMsg}</div>
       )}
       <div className={styles.moviesContainer}>
+        {children}
         {matchedLoadedMovies.map((item) => (
           <ItemBox key={item.id} item={item} likeNewMovie={likeNewMovie} />
         ))}
