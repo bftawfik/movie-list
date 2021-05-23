@@ -1,0 +1,29 @@
+.AddItemData {
+  display: flex;
+  flex-direction: column;
+  .addItemForm {
+    display: flex;
+    flex-wrap: wrap;
+    .formRow {
+      width: calc(50% - 32px);
+      margin-bottom: 32px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      &:nth-child(odd){
+        margin-right: 32px;
+      }
+      .formLabel {
+        font-size: 20px;
+        &.required {
+          &::before {
+            content: "*";
+          }
+        }
+      }
+      .formInput{
+        height: 40px;
+      }
+    }
+  }
+}
