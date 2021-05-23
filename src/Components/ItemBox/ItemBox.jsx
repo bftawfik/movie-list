@@ -9,7 +9,7 @@ import Data from "../../Services/Data";
 import * as styles from "./ItemBox.module.scss";
 
 const ItemBox = ({ item, likeNewMovie }) => {
-  const { title, poster_path, release_date, overview, seleceted } = item;
+  const { title, poster_path, release_date, overview, seleceted, type } = item;
   return (
     <div
       className={joinClassesWithSpace(
@@ -24,7 +24,7 @@ const ItemBox = ({ item, likeNewMovie }) => {
         <p>{Data.getProperDate(release_date)}</p>
       </div>
       <div className={styles.imageContainer}>
-        <img src={Data.getProperImageUrl(poster_path)} />
+        <img src={Data.getProperImageUrl(poster_path, type)} />
       </div>
       <LinesEllipsis
         component="h3"
