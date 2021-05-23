@@ -16,28 +16,10 @@ const monthNames = [
   "November",
   "December",
 ];
-
-const imageExists = (imageUrl) => {
-  const http = new XMLHttpRequest();
-
-  http.open("HEAD", imageUrl, false);
-  try {
-    http.send();
-  } catch (error) {
-    console.log(error);
-  }
-  // console.log(http.status);
-  return http.status != 404;
-};
+const getFallbackImage = () => "/img/placeholder.svg";
 
 const getProperImageUrl = (imageUrl, type) =>
-  type === "userMovie"
-    ? imageUrl !== null
-      ? imageUrl
-      : "/img/placeholder.svg"
-    : imageExists(domainUrl.concat(imageUrl))
-    ? domainUrl.concat(imageUrl)
-    : "/img/placeholder.svg";
+  type === "userMovie" ? imageUrl : domainUrl.concat(imageUrl);
 
 const getProperDate = (dateStr) => {
   const date = new Date(dateStr);
@@ -59,6 +41,7 @@ const loadMovies = async (
 };
 
 const Data = () => ({
+  getFallbackImage: getFallbackImage,
   getProperImageUrl: getProperImageUrl,
   getProperDate: getProperDate,
   loadMovies: loadMovies,
