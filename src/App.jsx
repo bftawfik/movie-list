@@ -19,14 +19,7 @@ class App extends React.Component {
       loadingMore: false,
       userMovies: [],
       likedMovies: [],
-      tempNewMovie: {
-        id: uuid(),
-        type: "userMovie",
-        movieName: "",
-        movieDate: null,
-        movieOverview: "",
-        moviePoster: null,
-      },
+      tempNewMovie: this.initNewMovie(),
     };
   }
 
@@ -34,6 +27,18 @@ class App extends React.Component {
     this.askForMore();
   }
 
+  initNewMovie = () => ({
+    id: uuid(),
+    type: "userMovie",
+    movieName: "",
+    movieDate: null,
+    movieOverview: "",
+    moviePoster: null,
+  });
+
+  resetTempNewMovie = () => {
+    this.setState({ tempNewMovie: this.initNewMovie() });
+  };
   askForMore = () => {
     // console.log("askForMore");
     const { pageNo, loadingMore, totalPages } = this.state;
@@ -121,6 +126,7 @@ class App extends React.Component {
         },
       ],
     });
+    this.resetTempNewMovie();
   };
 
   render() {
@@ -148,6 +154,7 @@ class App extends React.Component {
           tempNewMovie={tempNewMovie}
           onInputHandler={this.onInput}
           onSubmitHandler={this.onSubmit}
+          resetTempNewMovie={this.resetTempNewMovie}
         />
       </React.Fragment>
     );

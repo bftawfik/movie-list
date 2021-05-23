@@ -38,6 +38,7 @@ class Home extends React.Component {
       tempNewMovie,
       onInputHandler,
       onSubmitHandler,
+      resetTempNewMovie,
     } = this.props;
     return (
       <React.Fragment>
@@ -72,7 +73,11 @@ class Home extends React.Component {
             {...missingData.addItemData}
             tempNewMovie={tempNewMovie}
             onInputHandler={onInputHandler}
-            onSubmitHandler={onSubmitHandler}
+            onSubmitHandler={(e) => {
+              this.toggleModal();
+              onSubmitHandler(e);
+            }}
+            resetTempNewMovie={resetTempNewMovie}
           />
         </Modal>
       </React.Fragment>

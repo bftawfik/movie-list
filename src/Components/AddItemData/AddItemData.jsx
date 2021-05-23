@@ -7,8 +7,14 @@ import { joinClassesWithSpace } from "../../Helpers/helperFunctions";
 
 import * as styles from "./AddItemData.module.scss";
 
-const AddItemData = ({ title, form: { rows }, tempNewMovie, onInputHandler, onSubmitHandler }) => {
-
+const AddItemData = ({
+  title,
+  form: { rows },
+  tempNewMovie,
+  onInputHandler,
+  onSubmitHandler,
+  resetTempNewMovie,
+}) => {
   return (
     <div className={styles.AddItemData}>
       <SectionHeader title={title} />
@@ -27,7 +33,9 @@ const AddItemData = ({ title, form: { rows }, tempNewMovie, onInputHandler, onSu
         })}
         <div className={joinClassesWithSpace(styles.formRow, styles.fullWidth)}>
           <button type="submit">Add Movie</button>
-          <button type="reset">Cencel</button>
+          <button type="reset" onClick={resetTempNewMovie}>
+            Cencel
+          </button>
         </div>
       </form>
     </div>
