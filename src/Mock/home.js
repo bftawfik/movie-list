@@ -2,8 +2,10 @@ const home = {
   allMovies: {
     title: "All Movies",
     emptyListMsg: "No Movies To Show !",
+    addTitle: "Add to my movies",
+    removeTitle: "Remove from my movies",
   },
-  myMovies: {
+  allLikedMovies: {
     title: "My Movies",
     emptyListMsg: "No Movies To Show !",
   },

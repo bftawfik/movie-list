@@ -12,6 +12,8 @@ import * as styles from "./MoviesList.module.scss";
 const MoviesList = ({
   title,
   emptyListMsg,
+  addTitle,
+  removeTitle,
   totalMovies,
   loadedMovies,
   loadingMore,
@@ -42,7 +44,13 @@ const MoviesList = ({
       <div className={styles.moviesContainer}>
         {children}
         {matchedLoadedMovies.map((item) => (
-          <ItemBox key={item.id} item={item} likeNewMovie={likeNewMovie} />
+          <ItemBox
+            key={item.id}
+            item={item}
+            likeNewMovie={likeNewMovie}
+            addTitle={addTitle}
+            removeTitle={removeTitle}
+          />
         ))}
       </div>
       {askForMore && (
@@ -57,10 +65,7 @@ const MoviesList = ({
           >
             {({ inView, ref }) => {
               return loadingMore ? (
-                <BounceLoader
-                  topMsg="Loading..."
-                  bottomMsg="Please Waiat."
-                />
+                <BounceLoader topMsg="Loading..." bottomMsg="Please Waiat." />
               ) : rechedEnd ? (
                 <p className={styles.theEnd} ref={ref}>
                   The End

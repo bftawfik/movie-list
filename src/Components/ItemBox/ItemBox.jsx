@@ -15,7 +15,7 @@ class ItemBox extends React.Component {
 
   render() {
     const { error } = this.state;
-    const { item, likeNewMovie } = this.props;
+    const { item, likeNewMovie, addTitle, removeTitle } = this.props;
     const {
       title,
       poster_path,
@@ -32,7 +32,10 @@ class ItemBox extends React.Component {
         )}
       >
         <div className={styles.dateContainer}>
-          <button onClick={() => likeNewMovie(item)}>
+          <button
+            onClick={() => likeNewMovie(item)}
+            title={seleceted ? removeTitle : addTitle}
+          >
             <Heart />
           </button>
           <p>{Data.getProperDate(release_date)}</p>
@@ -47,6 +50,7 @@ class ItemBox extends React.Component {
                 ? Data.getFallbackImage()
                 : Data.getProperImageUrl(poster_path, type)
             }
+            alt={title}
           />
         </div>
         <LinesEllipsis
