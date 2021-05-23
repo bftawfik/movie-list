@@ -8,31 +8,30 @@ const FormRow = ({ styles, row: { type, label }, value, inputFunction }) => {
     id: type,
     name: type,
     className: styles.formInput,
-    value: value,
     onInput: inputFunction,
     required: true,
   };
   switch (type) {
     case "movieName": {
-      rowInput = <input type="text" {...rowInputProps} />;
+      rowInput = <input type="text" value={value} {...rowInputProps} />;
       break;
     }
     case "movieDate": {
-      rowInput = (
-        <input
-          type="date"
-          {...rowInputProps}
-        />
-      );
+      rowInput = <input type="date" value={value} {...rowInputProps} />;
       break;
     }
     case "movieOverview": {
-      rowInput = <textarea {...rowInputProps} />;
+      rowInput = <textarea value={value} {...rowInputProps} />;
       break;
     }
     case "moviePoster": {
       rowInput = (
-        <input type="file" accept=".jpg,.jpeg,.png,.gif" {...rowInputProps} />
+        <input
+          type="file"
+          filename={value}
+          accept=".jpg,.jpeg,.png,.gif"
+          {...rowInputProps}
+        />
       );
       break;
     }
