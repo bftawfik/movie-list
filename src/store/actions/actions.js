@@ -39,3 +39,8 @@ export const resetTempNewMovie = (value) => ({
   type: actionTypes.RESET_TEMP_NEW_MOVIE,
   payload: value,
 });
+
+export const updateAllUserMovies = (value) => ({
+  type: actionTypes.UPDATE_ALL_USER_MOVIES,
+  payload: value,
+});

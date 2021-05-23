@@ -12,7 +12,20 @@ import "./App.scss";
 class App extends React.Component {
   componentDidMount() {
     this.askForMore();
+    this.addSessioUserMovies();
   }
+
+  addSessioUserMovies = () => {
+    const { userMovies, updateAllUserMovies } = this.props;
+    const myStorage = window.sessionStorage;
+    let sessioUserMovies = myStorage.getItem("sessioUserMovies");
+    console.log(JSON.parse(sessioUserMovies));
+    if (!sessioUserMovies) {
+      myStorage.setItem("sessioUserMovies", JSON.stringify(userMovies));
+    }else{
+      updateAllUserMovies(JSON.parse(sessioUserMovies));
+    }
+  };
 
   askForMore = () => {
     console.log("askForMore");
@@ -146,6 +159,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     resetTempNewMovie: () => {
       dispatch(actionCreators.resetTempNewMovie());
+    },
+    updateAllUserMovies: (value) => {
+      dispatch(actionCreators.updateAllUserMovies(value));
     },
   };
 };

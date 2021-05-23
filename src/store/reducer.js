@@ -31,6 +31,11 @@ const initState = {
   tempNewMovie: initNewMovie(),
 };
 
+const updateSessioUserMovies = (userMovies) => {
+  const myStorage = window.sessionStorage;
+  myStorage.setItem("sessioUserMovies", JSON.stringify(userMovies));
+};
+
 const rootReducer = (state = initState, action) => {
   if (action.type === actionTypes.CHANGE_IS_LOADING) {
     console.log(action);
@@ -73,6 +78,7 @@ const rootReducer = (state = initState, action) => {
 
   if (action.type === actionTypes.ADD_NEW_USER_MOVIE) {
     console.log(action);
+    updateSessioUserMovies([...state.userMovies, action.payload]);
     return {
       ...state,
       userMovies: [...state.userMovies, action.payload],
@@ -81,6 +87,9 @@ const rootReducer = (state = initState, action) => {
 
   if (action.type === actionTypes.REMOVE_USER_MOVIE) {
     console.log(action);
+    updateSessioUserMovies(
+      state.userMovies.filter((movie) => movie?.id !== action.payload?.id)
+    );
     return {
       ...state,
       userMovies: state.userMovies.filter(
@@ -93,7 +102,10 @@ const rootReducer = (state = initState, action) => {
     console.log(action);
     return {
       ...state,
-      tempNewMovie: { ...state.tempNewMovie, [newMovieProps[action.payload.propName]]: action.payload.value },
+      tempNewMovie: {
+        ...state.tempNewMovie,
+        [newMovieProps[action.payload.propName]]: action.payload.value,
+      },
     };
   }
 
@@ -102,6 +114,14 @@ const rootReducer = (state = initState, action) => {
     return {
       ...state,
       tempNewMovie: initNewMovie(),
+    };
+  }
+
+  if (action.type === actionTypes.UPDATE_ALL_USER_MOVIES) {
+    console.log(action);
+    return {
+      ...state,
+      userMovies: action.payload,
     };
   }
 
