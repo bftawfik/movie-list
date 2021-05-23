@@ -17,7 +17,27 @@ const monthNames = [
   "December",
 ];
 
-const getProperImageUrl = (relUrl) => domainUrl.concat(relUrl);
+const imageExists = (imageUrl) => {
+  const http = new XMLHttpRequest();
+
+  http.open("HEAD", imageUrl, false);
+  try {
+    http.send();
+  } catch (error) {
+    console.log(error);
+  }
+  // console.log(http.status);
+  return http.status != 404;
+};
+
+const getProperImageUrl = (imageUrl, type) =>
+  type === "userMovie"
+    ? imageUrl !== null
+      ? imageUrl
+      : "/img/placeholder.svg"
+    : imageExists(domainUrl.concat(imageUrl))
+    ? domainUrl.concat(imageUrl)
+    : "/img/placeholder.svg";
 
 const getProperDate = (dateStr) => {
   const date = new Date(dateStr);
