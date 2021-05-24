@@ -67,7 +67,11 @@ const MoviesList = ({
           >
             {({ inView, ref }) => {
               return isLoading ? (
-                <BounceLoader topMsg="Loading..." bottomMsg="Please Waiat." />
+                <BounceLoader
+                  topMsg="Loading..."
+                  bottomMsg="Please Waiat."
+                  myRef={ref}
+                />
               ) : rechedEnd ? (
                 <p className={styles.theEnd} ref={ref}>
                   The End
@@ -76,6 +80,7 @@ const MoviesList = ({
                 <button
                   className={styles.askForMore}
                   onClick={askForMore && askForMore}
+                  ref={ref}
                 >
                   Show more
                 </button>
