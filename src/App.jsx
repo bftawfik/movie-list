@@ -19,7 +19,7 @@ class App extends React.Component {
     const { userMovies, updateAllUserMovies } = this.props;
     const myStorage = window.sessionStorage;
     let sessioUserMovies = myStorage.getItem("sessioUserMovies");
-    console.log(JSON.parse(sessioUserMovies));
+    // console.log(JSON.parse(sessioUserMovies));
     if (!sessioUserMovies) {
       myStorage.setItem("sessioUserMovies", JSON.stringify(userMovies));
     }else{
@@ -28,7 +28,7 @@ class App extends React.Component {
   };
 
   askForMore = () => {
-    console.log("askForMore");
+    // console.log("askForMore");
     const {
       switchLoadMore,
       isLoading,

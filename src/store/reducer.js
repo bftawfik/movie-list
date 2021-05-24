@@ -38,12 +38,12 @@ const updateSessioUserMovies = (userMovies) => {
 
 const rootReducer = (state = initState, action) => {
   if (action.type === actionTypes.CHANGE_IS_LOADING) {
-    console.log(action);
+    // console.log(action);
     return { ...state, isLoading: action.payload };
   }
 
   if (action.type === actionTypes.ADD_LOADED_MOVIES) {
-    console.log(action);
+    // console.log(action);
     return {
       ...state,
       isLoading: action.payload.isLoading,
@@ -59,7 +59,7 @@ const rootReducer = (state = initState, action) => {
   }
 
   if (action.type === actionTypes.ADD_NEW_LIKED_MOVIE) {
-    console.log(action);
+    // console.log(action);
     return {
       ...state,
       likedMovies: [...state.likedMovies, action.payload],
@@ -67,7 +67,7 @@ const rootReducer = (state = initState, action) => {
   }
 
   if (action.type === actionTypes.REMOVE_LIKED_MOVIE) {
-    console.log(action);
+    // console.log(action);
     return {
       ...state,
       likedMovies: state.likedMovies.filter(
@@ -77,7 +77,7 @@ const rootReducer = (state = initState, action) => {
   }
 
   if (action.type === actionTypes.ADD_NEW_USER_MOVIE) {
-    console.log(action);
+    // console.log(action);
     updateSessioUserMovies([...state.userMovies, action.payload]);
     return {
       ...state,
@@ -86,7 +86,7 @@ const rootReducer = (state = initState, action) => {
   }
 
   if (action.type === actionTypes.REMOVE_USER_MOVIE) {
-    console.log(action);
+    // console.log(action);
     updateSessioUserMovies(
       state.userMovies.filter((movie) => movie?.id !== action.payload?.id)
     );
@@ -99,7 +99,7 @@ const rootReducer = (state = initState, action) => {
   }
 
   if (action.type === actionTypes.CHANGE_TEMP_NEW_MOVIE_PROP) {
-    console.log(action);
+    // console.log(action);
     return {
       ...state,
       tempNewMovie: {
@@ -110,7 +110,7 @@ const rootReducer = (state = initState, action) => {
   }
 
   if (action.type === actionTypes.RESET_TEMP_NEW_MOVIE) {
-    console.log(action);
+    // console.log(action);
     return {
       ...state,
       tempNewMovie: initNewMovie(),
@@ -118,7 +118,7 @@ const rootReducer = (state = initState, action) => {
   }
 
   if (action.type === actionTypes.UPDATE_ALL_USER_MOVIES) {
-    console.log(action);
+    // console.log(action);
     return {
       ...state,
       userMovies: action.payload,
